@@ -1,0 +1,12 @@
+{
+  "referenceRepos": [
+    {
+      "branch": "dev",
+      "id": "cruvero__cruvero-mcp-k8s@dev",
+      "indexedTokens": 132241,
+      "owner": "cruvero",
+      "repo": "cruvero-mcp-k8s",
+      "slot": 1
+    }
+  ]
+}

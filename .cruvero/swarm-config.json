@@ -1,0 +1,110 @@
+{
+  "agents": [
+    {
+      "role": "Cruvero Plan Architect v2",
+      "promptVersion": "v2",
+      "kbRefs": [
+        "github.com/cruvero/cruvero-mcp-k8s@dev",
+        "SonarQube Web API docs (Community Edition)",
+        "http://sonar.dev.gchinfo.com/"
+      ]
+    }
+  ],
+  "auditPrompts": {
+    "acceptanceCriteria": "docs/AUDIT/acceptance-criteria.md",
+    "phase-1": "docs/AUDIT/phase-audit-1.md",
+    "phase-2": "docs/AUDIT/phase-audit-2.md",
+    "phase-3": "docs/AUDIT/phase-audit-3.md",
+    "phase-4": "docs/AUDIT/phase-audit-4.md",
+    "phase-5": "docs/AUDIT/phase-audit-5.md",
+    "phase-6": "docs/AUDIT/phase-audit-6.md",
+    "riskMatrix": "docs/AUDIT/risk-matrix.md"
+  },
+  "createdAt": "2026-03-09T01:36:31Z",
+  "dependencyGraph": [
+    {
+      "from": "PHASE1_Scaffold_Config",
+      "to": "PHASE1A_Sonarqube_Manager",
+      "risk": 0.1
+    },
+    {
+      "from": "PHASE1A_Sonarqube_Manager",
+      "to": "PHASE2_Core_ReadOnly_Tools",
+      "risk": 0.2
+    },
+    {
+      "from": "PHASE2_Core_ReadOnly_Tools",
+      "to": "PHASE2A_Issues_Hotspots_Read",
+      "risk": 0.1
+    },
+    {
+      "from": "PHASE2A_Issues_Hotspots_Read",
+      "to": "PHASE3_Write_Tools",
+      "risk": 0.3
+    },
+    {
+      "from": "PHASE3_Write_Tools",
+      "to": "PHASE3A_Quality_Gates_Profiles",
+      "risk": 0.2
+    },
+    {
+      "from": "PHASE3A_Quality_Gates_Profiles",
+      "to": "PHASE4_Destructive_Polish",
+      "risk": 0.4
+    },
+    {
+      "from": "PHASE4_Destructive_Polish",
+      "to": "PHASE5_Gateway_Health",
+      "risk": 0.2
+    },
+    {
+      "from": "PHASE5_Gateway_Health",
+      "to": "PHASE6_Helm_ArgoCD",
+      "risk": 0.1
+    },
+    {
+      "from": "PHASE6_Helm_ArgoCD",
+      "to": "PHASE7_Bulk_RBAC_Stubs",
+      "risk": 0.3
+    },
+    {
+      "from": "PHASE7_Bulk_RBAC_Stubs",
+      "to": "PHASE8_CI_Docs",
+      "risk": 0.1
+    },
+    {
+      "from": "PHASE8_CI_Docs",
+      "to": "PHASE9_MultiTenant_Telemetry",
+      "risk": 0.5
+    }
+  ],
+  "knowledgeBases": [
+    "SonarQube Web API docs (Community Edition)",
+    "github.com/cruvero/cruvero-mcp-k8s@dev",
+    "http://sonar.dev.gchinfo.com/"
+  ],
+  "modelOverride": "grok-code-fast-1",
+  "phasePlans": {
+    "phase-1": "docs/PHASE_PLANS/phase-1.md",
+    "phase-2": "docs/PHASE_PLANS/phase-2.md",
+    "phase-3": "docs/PHASE_PLANS/phase-3.md",
+    "phase-4": "docs/PHASE_PLANS/phase-4.md",
+    "phase-5": "docs/PHASE_PLANS/phase-5.md",
+    "phase-6": "docs/PHASE_PLANS/phase-6.md"
+  },
+  "planId": "af8b082b-e6b3-4913-bbe0-b2deb848c06a",
+  "promptVersions": {
+    "Cruvero Plan Architect v2": "v2"
+  },
+  "referenceRepo": "cruvero/cruvero-mcp-k8s@dev",
+  "referenceRepos": [
+    {
+      "branch": "dev",
+      "id": "cruvero__cruvero-mcp-k8s@dev",
+      "indexedTokens": 132241,
+      "owner": "cruvero",
+      "repo": "cruvero-mcp-k8s",
+      "slot": 1
+    }
+  ]
+}
