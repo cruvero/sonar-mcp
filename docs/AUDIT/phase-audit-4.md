@@ -21,3 +21,5 @@ Return findings ordered by severity with explicit pass/fail gate decision and re
 
 ## Findings
 *(Pending)*
+
+**Gate Decision: PENDING**

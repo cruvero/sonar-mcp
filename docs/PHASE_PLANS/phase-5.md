@@ -22,7 +22,7 @@ Execute the first scoped segment of this workstream with deterministic outputs a
 ## Detailed Task List
 | Task ID | Task | Owner/Agent | Depends On | Deliverable | Validation Command |
 |---|---|---|---|---|---|
-| P5-T01 | Implement gateway registration/heartbeat in pkg/gateway (mirror k8s). | Cruvero Plan Architect v2 | phase-4 | gateway.go | curl /mcp/register | jq . |
-| P5-T02 | Healthz endpoint with sonar status. | Cruvero Plan Architect v2 | P5-T01 | handlers/health.go | curl /healthz |
-| P5-T03 | OTEL/slog integration unchanged. | Cruvero Plan Architect v2 | P5-T02 | otel.go | go test ./pkg/otel |
-| P5-T04 | Server startup with config load. | Cruvero Plan Architect v2 | P5-T03 | cmd/server/main.go | make mcp-server-run |
+| P5-T01 | Implement gateway registration/heartbeat in pkg/gateway (mirror k8s: register /mcp/gateway/register, ticker 30s). TLS/SPIFFE. | Cruvero Executor v1 | PHASE4 | gateway_test.go | go test |
+| P5-T02 | /healthz: aggregate mcp healthy + manager.HealthCheck() cached. | Cruvero Plan Architect v2 | P5-T01 | curl /healthz | jq |
+| P5-T03 | cmd/mcp-server/main.go: flags, server start, graceful shutdown. | Cruvero Executor v1 | P5-T02 | go run . & curl /healthz |
+| P5-T04 | Audit phase-5. | Cruvero Plan Architect v2 | P5-T03 | phase-audit-5 |

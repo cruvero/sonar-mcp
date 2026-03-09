@@ -22,7 +22,8 @@ Execute the first scoped segment of this workstream with deterministic outputs a
 ## Detailed Task List
 | Task ID | Task | Owner/Agent | Depends On | Deliverable | Validation Command |
 |---|---|---|---|---|---|
-| P4-T01 | Implement/polish all MCP destructive tools: delete_project (/api/projects/delete), bulk_delete_issues (with >50 guard, riskTier=high). | Cruvero Plan Architect v2 | phase-3 | delete_*.go | go test ./pkg/tools/destructive |
-| P4-T02 | Add risk hints/confirm for destructive, project policy stub. | Cruvero Plan Architect v2 | P4-T01 | tool wrappers | curl tool | jq .riskTier == "high" |
-| P4-T03 | Full tool coverage >90%, lint clean. | Cruvero Plan Architect v2 | P4-T02 | tests | go test -cover |
-| P4-T04 | Docs update for tools in PLAN.md. | Cruvero Plan Architect v2 | P4-T03 | docs/PLAN.md | grep -c tool |
+| P4-T01 | Implement/polish destructive tools: delete_project /api/projects/delete?project=KEY riskTier:2 confirm, bulk_delete_issues /api/issues/bulk_delete issueKeys[]. | Cruvero Executor v1 | PHASE3A | destructive_test.go | go test -race |
+| P4-T02 | Bulk guards: if len(issue_keys)>config.BULK_THRESHOLD { riskTier=2 hint abort }. | Cruvero Plan Architect v2 | P4-T01 | TestBulkGuard fail@51 | go test |
+| P4-T03 | Project policy validate: stub allow-all log warn future RBAC. | Cruvero Executor v1 | P4-T02 | TestPolicyAllow | go test |
+| P4-T04 | Full tools register 15+. | Cruvero Executor v1 | P4-T03 | curl /mcp/tools | jq 'length' ==15 |
+| P4-T05 | Audit phase-4. | Cruvero Plan Architect v2 | P4-T04 | phase-audit-4 |

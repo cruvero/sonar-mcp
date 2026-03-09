@@ -15,6 +15,7 @@ This phase deploys via Helm/ArgoCD (PHASE6_Helm_ArgoCD), depending on PHASE5_Gat
 ## Detailed Task List
 | Task ID | Task | Owner/Agent | Depends On | Deliverable | Validation Command |
 |---|---|---|---|---|---|
-| P6-T01 | Mirror/update charts/mcp-sonarqube from k8s (values, templates). | Cruvero Plan Architect v2 | phase-5 audit pass | charts/ | helm lint charts/mcp-sonarqube |
-| P6-T02 | ArgoCD app yaml stub. | Cruvero Plan Architect v2 | P6-T01 | argocd-app.yaml | kubectl apply --dry-run |
-| P6-T03 | Test deploy local kind/minikube. | Cruvero Plan Architect v2 | P6-T02 | logs | port-forward curl /healthz |
+| P6-T01 | Mirror/update charts/mcp-sonarqube from k8s (values: image, SONAR_URL/TOKEN secrets, replicas=1, resources). templates/deployment,service. | Cruvero Plan Architect v2 | phase-5 audit pass | charts/ | helm lint charts/mcp-sonarqube && helm template . |
+| P6-T02 | ArgoCD app yaml stub: github.com/cruvero/cruvero-mcp-sonarqube//charts/mcp-sonarqube, values from secrets. | Cruvero Plan Architect v2 | P6-T01 | argocd-app.yaml | kubectl apply --dry-run=client -f argocd-app.yaml |
+| P6-T03 | Test deploy local kind/minikube: port-forward curl /healthz. | Cruvero Executor v1 | P6-T02 | deploy logs | helm install mcp-sonarqube charts/ --kube-context kind; kubectl port-forward svc/mcp-sonarqube 8080:80; curl /healthz |
+| P6-T04 | Audit phase-5/6. | Cruvero Plan Architect v2 | P6-T03 | phase-audit-5 |
