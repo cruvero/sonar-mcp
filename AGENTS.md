@@ -23,3 +23,7 @@
 - All phase audits pass.
 - Residual risks documented with owners and mitigation paths.
 - Docs and implementation state are fully aligned.
+
+## Agents
+- **Cruvero Plan Architect v2** (docs/PROMPTS/agent-Cruvero-Plan-Architect-v2.md): Plans/audits.
+- **Cruvero Executor v1** (docs/PROMPTS/agent-Cruvero-Executor-v1.md): Code impl/tasks.
